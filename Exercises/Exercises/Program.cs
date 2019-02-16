@@ -347,6 +347,19 @@ namespace Exercises
             int num = 0; Console.WriteLine("Input an integer: "); intput(ref num);
             if (num % 3 == 0 || num % 7 == 0) Console.WriteLine("True");
         }
+        static void case34()
+        {
+            string data = Console.ReadLine();
+            if (data.StartsWith("Hello") || data.StartsWith("hello"))
+            {
+                Console.WriteLine("Input starts with Hello");
+            }
+            else Console.WriteLine("Input does not start with Hello");
+        }
+        static void case35()
+        {
+
+        }
         static void Main(string[] args)
         {
             bool t = true;
@@ -359,111 +372,43 @@ namespace Exercises
                 Console.WriteLine();
                 switch (x)
                 {
-                    case -1:
-                        t = false;
-                        break;
-                    case 0:
-                        case0();
-                        break;
-                    case 1:
-                        case1();
-                        break;
-                    case 2:
-                        case2();
-                        break;
-                    case 3:
-                        case3();
-                        break;
-                    case 4:
-                        case4();
-                        break;
-                    case 5:
-                        case5();
-                        break;
-                    case 6:
-                        case6();
-                        break;
-                    case 7:
-                        case7();
-                        break;
-                    case 8:
-                        case8();
-                        break;
-                    case 9:
-                        case9();
-                        break;
-                    case 10:
-                        case10();
-                        break;
-                    case 11:
-                        case11();
-                        break;
-                    case 12:
-                        case12();
-                        break;
-                    case 13:
-                        case13();
-                        break;
-                    case 14:
-                        case14();
-                        break;
-                    case 15:
-                        case15();
-                        break;
-                    case 16:
-                        case16();
-                        break;
-                    case 17:
-                        case17();
-                        break;
-                    case 18:
-                        case18();
-                        break;
-                    case 19:
-                        case19();
-                        break;
-                    case 20:
-                        case20();
-                        break;
-                    case 21:
-                        case21();
-                        break;
-                    case 22:
-                        case22();
-                        break;
-                    case 23:
-                        case23();
-                        break;
-                    case 24:
-                        case24();
-                        break;
-                    case 25:
-                        case25();
-                        break;
-                    case 26:
-                        case26();
-                        break;
-                    case 27:
-                        case27();
-                        break;
-                    case 28:
-                        case28();
-                        break;
-                    case 29:
-                        case29();
-                        break;
-                    case 30:
-                        case30();
-                        break;
-                    case 31:
-                        case31();
-                        break;
-                    case 32:
-                        case32();
-                        break;
-                    case 33:
-                        case33();
-                        break;
+                    case -1: t = false;break;
+                    case 0: case0();break;
+                    case 1: case1();break;
+                    case 2: case2();break;
+                    case 3: case3();break;
+                    case 4: case4();break;
+                    case 5: case5();break;
+                    case 6: case6();break;
+                    case 7: case7();break;
+                    case 8: case8();break;
+                    case 9: case9();break;
+                    case 10: case10();break;
+                    case 11: case11();break;
+                    case 12: case12();break;
+                    case 13: case13();break;
+                    case 14: case14();break;
+                    case 15: case15();break;
+                    case 16: case16();break;
+                    case 17: case17();break;
+                    case 18: case18();break;
+                    case 19: case19();break;
+                    case 20: case20();break;
+                    case 21: case21();break;
+                    case 22: case22();break;
+                    case 23: case23();break;
+                    case 24: case24();break;
+                    case 25: case25();break;
+                    case 26: case26();break;
+                    case 27: case27();break;
+                    case 28: case28();break;
+                    case 29: case29();break;
+                    case 30: case30();break;
+                    case 31: case31();break;
+                    case 32: case32();break;
+                    case 33: case33();break;
+                    case 34: case34();break;
+                    case 35: case35();break;
                 }
             }
         }
