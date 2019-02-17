@@ -50,8 +50,28 @@ namespace Exercises
             "Program to check if 'HP' appears at second position in a string and returns the string without 'HP'.",
             "Program to get a new string of two characters from a given string. The first and second character of the given string must be 'P' and 'H', so PHP will be 'PH'.",
             "Program to find the largest and lowest values from three integer values.",
-            "Program to check the nearest value of 20 of two given integers and return 0 if two numbers are same."
-
+            "Program to check the nearest value of 20 of two given integers and return 0 if two numbers are same.",
+            "Program to check if a given string contains ‘w’ character between 1 and 3 times.",
+            "Program to create a new string where the first 4 characters will be in lower case. If the string is less than 4 characters then make the whole string in upper case.",
+            "Program to check if a given string starts with \"w\" and immediately followed by two \"ww\".",
+            "Program to create a new string of every other character (odd position) from the first position of a given string.",
+            "Program to count a specified number in a given array of integers.",
+            "Program to check if a number appears as either the first or last element of an array of integers and the length is 1 or more.",
+            "Program to compute the sum of all the elements of an array of integers.",
+            "Program to check if the first element and the last element are equal of an array of integers and the length is 1 or more.",
+            "Program to check if the first element or the last element of the two arrays ( length 1 or more) are equal.",
+            "Program to rotate an array (length 3) of integers in left direction.",
+            "Program to get the larger value between first and last element of an array (length 3) of integers.",
+            "Program to create a new array of length containing the middle elements of three arrays (each length 3) of integers.",
+            "Program to check if an array contains an odd number.",
+            "Program to get the century from a year.",
+            "Program to find the pair of adjacent elements that has the largest product of an given array.",
+            "Program to check if a given string is a palindrome or not.",
+            "Program to find the pair of adjacent elements that has the highest product of an given array of integers.",
+            "Program which will accept a list of integers and checks how many integers are needed to complete the range.",
+            "Program to calculate the sum of all the intgers of a rectangular matrix except those integers which are located below an intger of value 0.",
+            "Program to sort the integers in ascending order without moving the number -5.",
+            "Program to reverse the strings contained in each pair of matching parentheses in a given string and also remove the parentheses within the given string."
             };
             for (int i = 0; i < questions.Length; i++)
             {
@@ -358,57 +378,511 @@ namespace Exercises
         }
         static void case35()
         {
+            int num1 = 0; Console.WriteLine("Enter an integer less than 100: "); intput(ref num1);
+            int num2 = 0; Console.WriteLine("Enter another integer greater than 100: "); intput(ref num2);
+            if(num1 < 100 && num2 > 100)
+            {
+                Console.WriteLine("Inputs are right.");
+            }
+            else Console.WriteLine("Inputs are wrong.");
+        }
+        static void case36()
+        {
+            int num1 = 0; Console.WriteLine("Enter an integer: "); intput(ref num1);
+            int num2 = 0; Console.WriteLine("Enter another integer: "); intput(ref num2);
+            if(num1 > -10 && num1 < 10 && num2 > -10 && num2 < 10)
+            {
+                Console.WriteLine("Inputs are in the range -10 to 10.");
+            }
+            else Console.WriteLine("Input are not in the range -10 to 10.");
+        }
+        static void case37()
+        {
+            string data = "PHP Tutorial"; Console.WriteLine(data); Console.WriteLine();
+            if(data.IndexOf("HP") == 1)
+            {
+                string data1 = data.Substring(0, 1);
+                string data2 = data.Substring(3);
+                Console.WriteLine(data1 + data2);
+            }
+            string str = "9HP 6676"; Console.WriteLine(str); Console.WriteLine(); Console.WriteLine();
+            if (str.IndexOf("HP") == 1)
+            {
+                string data1 = str.Substring(0, 1);
+                string data2 = str.Substring(3);
+                Console.WriteLine(data1 + data2);
+            }
+        }
+        static void case38()
+        {
+            string str = "PHP Tutorial"; Console.WriteLine(str + "\n"); 
+            if (str[0] == 'P' && str[1] == 'H')
+            {
+                var result = "";  // Ancak bu şekilde olabildi.
+                result += str[0];
+                result += str[1];
+                Console.WriteLine(result);
+            }
+        }
+        static void case39()
+        {
+            int num1 = 0; Console.WriteLine("Enter first integer: "); intput(ref num1);
+            int num2 = 0; Console.WriteLine("Enter second integer: "); intput(ref num2);
+            int num3 = 0; Console.WriteLine("Enter third integer: "); intput(ref num3);
+            Console.WriteLine();
+            // -----------------------------
+            // Hazır fonksiyonlar ile yapımı
+            // -----------------------------
 
+            Console.WriteLine("Largest of three: " + Math.Max(num1, Math.Max(num2,num3)));
+            Console.WriteLine("Lowest of three: " + Math.Min(num1, Math.Min(num2,num3)));
+            Console.WriteLine("\n-----------------\n");
+
+            // ------------------------------
+            // Kendi yazdığım şekliyle
+            // ------------------------------
+
+            if(num1 > num2)
+            {
+                if(num1 > num3)
+                {
+                    Console.WriteLine("Largest of three: {0}", num1);
+                    if (num2 > num3) Console.WriteLine("Lowest of three: {0}",num3);
+                    else Console.WriteLine("Lowest of three: {0}", num2);
+                }
+                if(num3 > num1)
+                {
+                    Console.WriteLine("Largest of three: {0}", num3);
+                    Console.WriteLine("Lowest of three: {0}",num2);
+                }
+            }
+            if(num2 > num1)
+            {
+                if(num2 > num3)
+                {
+                    Console.WriteLine("Largest of three: {0}",num2);
+                    if (num3 > num1) Console.WriteLine("Lowest of three: {0}",num1);
+                    else Console.WriteLine("Lowest of three: {0}",num3);
+                }
+                if(num3 > num2)
+                {
+                    Console.WriteLine("Largest of three: {0}",num3);
+                    Console.WriteLine("Lowest of three: {0}", num1);
+                }
+            }
+
+            // ------------------------------
+            // Daha verimli bir çözüm.
+            // ------------------------------
+
+            Console.WriteLine("\n-----------------\n");
+
+            int max = num1;
+            int min = num1;
+
+            if (num2 > max) max = num2;
+            if (num3 > max) max = num3;
+
+            if (num2 < min) min = num2;
+            if (num3 < min) min = num3;
+
+            Console.WriteLine("Largest of three: {0}\nLowest of three: {1}", max, min);
+        }
+        static void case40()
+        {
+            int num1 = 0; Console.WriteLine("Enter an integer: "); intput(ref num1);
+            int num2 = 0; Console.WriteLine("Enter another integer: "); intput(ref num2);
+            if (Math.Abs(20 - num1) < Math.Abs(20 - num2)) Console.WriteLine("{0} is closer", num1);
+            else Console.WriteLine("{0} is closer", num2);
+        }
+        static void case41()
+        {
+            Console.WriteLine("Enter a string contains at least one 'w' character between 1 and 3 times");
+            string str = Console.ReadLine();
+            int count = 0;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == 'w') count++;
+            }
+            if (count >= 1 && count <= 3) Console.WriteLine(true);
+            else Console.WriteLine(false);
+        }
+        static void case42()
+        {
+            Console.WriteLine("Enter a string: ");
+            string str = Console.ReadLine();
+            if (str.Length < 4) Console.WriteLine(str.ToUpper());
+            else Console.WriteLine(str.ToLower());
+        }
+        static void case43()
+        {
+            Console.WriteLine("Enter a string: ");
+            string str = Console.ReadLine();
+            Console.WriteLine(str.StartsWith("www"));
+        }
+        static void case44()
+        {
+            Console.WriteLine("Enter a string: ");
+            string str = Console.ReadLine();
+            string str2= "";
+            for (int i = 0; i < str.Length; i+=2)
+            {
+                str2 += str[i];
+            }
+            Console.WriteLine(str2);
+        }
+        static void case45()
+        {
+            int[] nums = { 2, 4, 6, 4, 3, 8, 10, 45, 34, 23, 1, 5, 41, 332, 45 };
+            foreach (var item in nums)
+            {
+                Console.Write(item + ", ");
+            }
+            Console.WriteLine("\n Enter an integer: "); int num = 0; intput(ref num);
+            int count = 0;
+            foreach (var item in nums)
+            {
+                if (item == num) count++;
+            }
+            Console.WriteLine($"Number of {num} present in the said array: {count}\n");
+            Console.WriteLine($"Number of {num} present in the said array: {nums.Count(n => n == num)}");
+        }
+        static void case46()
+        {
+            int[] nums = { 2, 3, 5, 3, 7, 5, 3, 8, 4, 3, 4, };
+            foreach (var item in nums)
+            {
+                Console.Write(item + ", ");
+            }
+            Console.WriteLine("\nEnter an integer: "); int num = 0; intput(ref num);
+            Console.WriteLine(num == nums[0] || num == nums[nums.Length-1]);
+        }
+        static void case47()
+        {
+            int[] nums = { 2, 3, 5, 3, 7, 5, 3, 8, 4, 3, 4, 6};
+            foreach (var item in nums)
+            {
+                Console.Write(item + ", ");
+            }
+            int num = 0;
+            foreach (var item in nums)
+            {
+                num += item;
+            }
+            Console.WriteLine("\nSum of the elements in the array: {0}", num);
+        }
+        static void case48()
+        {
+            int[] nums = { 2, 3, 5, 3, 7, 5, 3, 8, 4, 3, 4, 6 };
+            foreach (var item in nums)
+            {
+                Console.Write(item + ", ");
+            }
+            Console.WriteLine();
+            Console.WriteLine(nums[0] == nums[nums.Length-1]);
+            int num = 0; Console.WriteLine("Enter an integer for change the last number: "); intput(ref num);
+            nums[nums.Length - 1] = num;
+            foreach (var item in nums)
+            {
+                Console.Write(item + ", ");
+            }
+            Console.WriteLine();
+            Console.WriteLine(nums[0] == nums[nums.Length - 1]);
+        }
+        static void case49()
+        {
+            int[] nums1 = { 1, 3, 4, 5, 7, 2, 5, 7, 4, 5, 3, 6 };
+            Console.WriteLine("Array1: {0}\n", string.Join(", ", nums1));
+            int[] nums2 = { 1, 4, 5, 6, 7, 4, 3, 5, 6, 4, 2, 3 };
+            Console.WriteLine($"Array2: {string.Join(", ", nums2)}\n\n");
+            Console.WriteLine(nums1[0].Equals(nums2[0]) || nums1[nums1.Length-1] == nums2[nums2.Length-1]);
+        }
+        static void case50()
+        {
+            int[] nums = { 2, 5, 4 };
+            Console.WriteLine(string.Join(", ",nums));
+            
+            for (int i = 0; i < nums.Length / 2; i++)  // Burada kritik bir hata yaptım
+            {                                          // Dizinin ortasına kadar gitmek lazım. yoksa her şeyi geri almış oluyorsun.
+                int temp = nums[i];
+                nums[i] = nums[nums.Length -1 - i];
+                nums[nums.Length -1- i] = temp;
+            }
+            Console.WriteLine("\nArray rotated\n");
+            Console.WriteLine(string.Join(", ", nums));
+        }
+        static void case51()
+        {
+            int[] nums = { 2, 3, 5, 6, 7, 8, 6, 9 };
+            Console.WriteLine(string.Join(", ", nums));
+            int max = nums[1];
+            for (int i = 2; i < nums.Length-1; i++)
+            {
+                if (nums[i] > max) max = nums[i];
+            }
+            Console.WriteLine("Max value between first and last values: {0}", max);
+        }
+        static void case52()
+        {
+            int[] n1 = { 1, 2, 3 };
+            Console.WriteLine(string.Join(", ", n1));
+            int[] n2 = { 4, 5, 6 };
+            Console.WriteLine(string.Join(", ", n2));
+            int[] n3 = { 7, 8, 9 };
+            Console.WriteLine(string.Join(", ", n3));
+            int[] nums = { n1[1], n2[1], n3[1] };
+            Console.WriteLine();
+            Console.WriteLine(string.Join(", ", nums));
+        }
+        static void case53()
+        {
+            int[] nums = { 2, 4, 5, 6, 8, 6, 0 };
+            Console.WriteLine(string.Join(", ",nums));
+            bool b = false;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] % 2 == 1) b = true;
+            }
+            Console.WriteLine(b);
+        }
+        static void case54()
+        {
+            int year = 0; Console.WriteLine("Enter the year: "); intput(ref year);
+            var date = new DateTime(year,1,1);
+            Console.WriteLine(date.Year);
+        }
+        static void case55()
+        {
+            int[] nums = { 21, 33, 44, 51, 53, 43, 13, 25, 38, 45, 63, 76, 34, 44, 32, 41 };
+            int max = 0;
+            Console.WriteLine(string.Join(", ",nums));
+            foreach (var item in nums)
+            {
+                if (item > max) max = item;
+            }
+            int i = Array.IndexOf(nums, max);
+            Console.WriteLine(nums[i-1]+", "+nums[i]+", "+nums[i+1]);
+        }
+        static void case56()
+        {
+            string str = Console.ReadLine();
+            bool b = true;
+            for (int i = 0; i < str.Length/2; i++) // ey nihat adanada tahin ye
+            {
+                if (str[i] != str[str.Length -1 - i]) b = false;
+            }
+            Console.WriteLine(b);
+        }
+        static void case57()
+        {
+            int[] nums = { 12, 4, 6, 10, 8, 9, 15, 16 };
+            Console.WriteLine(string.Join(", ", nums));
+            int max = 0;
+            int index = 0;
+            for (int i = 0; i < nums.Length-1; i++)
+            {
+                if(nums[i]*nums[i+1] > max)
+                {
+                    max = nums[i] * nums[i + 1];
+                    index = i;
+                }
+            }
+            Console.WriteLine($"The highest product is {max} whic was from pairs {nums[index]},{nums[index+1]}");
+        }
+        static void case58()
+        {
+            int[] nums = { 4, 3, 6, 7, 9 };
+            Console.WriteLine(string.Join(", ",nums));
+            bool b = false;
+            int count = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                b = false;
+                for (int j = 0; j < nums.Length; j++)
+                {
+                    if (i == nums[j]) b = true;
+                }
+                if (b == false) count++;
+            }
+            Console.WriteLine("Need {0} integer.",count);
+        }
+        static void case59()
+        {
+            int[,] nums = { { 0, 2, 3, 2 }, { 0, 6, 0, 1 }, { 4, 0, 3, 0 } };
+            int sum = 0;
+            for (int i = 0; i < nums.GetLength(0); i++)
+            {
+                for (int j = 0; j < nums.GetLength(1); j++)
+                {
+                    Console.Write(nums[i,j] + " , ");
+                }
+                Console.WriteLine();
+            }
+            for (int i = 0; i < nums.GetLength(0); i++)
+            {
+                for (int j = 0; j < nums.GetLength(1); j++)
+                {
+                    sum += nums[i, j];
+                    
+                    if(nums[i, j] == 0 && i < nums.GetLength(0)-1)
+                    {
+                        nums[i+1, j] = 0;
+                    }
+                }
+            }
+            Console.WriteLine(sum);
+        }
+        static void case60()
+        {
+            int[] nums = { -5, 236, 120, 70, -5, -5, 698, 280 };
+            Console.WriteLine(string.Join(", ", nums));
+            Console.WriteLine("-----------------------------------");
+            for (int k = 0; k < nums.Length-1; k++)
+            {
+                for (int i = 0; i < nums.Length-1; i++)
+                {
+                    if (nums[i] != -5)
+                    {
+                        if (nums[i + 1] != -5)
+                        {
+                            if(nums[i] > nums[i + 1])
+                            {
+                                int temp = nums[i+1];
+                                nums[i + 1] = nums[i];
+                                nums[i] = temp;
+
+                            }
+                        }
+                        if(nums[i + 1] == -5)
+                        {
+                            int j;
+                            for (j = 2; j < nums.Length; j++)
+                            {
+                                if(nums[i + j] != -5)
+                                {
+                                    break;
+                                }
+                            }
+                            if(nums[i] > nums[i + j])
+                            {
+                                int temp = nums[i + j];
+                                nums[i + j] = nums[i];
+                                nums[i] = temp;
+                            }
+                        }
+                    }
+                }
+                    Console.WriteLine(string.Join(", ", nums));
+                //Console.WriteLine("-----------");
+            }
+            //Console.WriteLine(string.Join(", ", nums));
+        }
+        static void case61()
+        {
+            string str = "ab(cd(e(asdf)f)gh)ij";
+            string result = "";
+            result = str3(str);
+            Console.WriteLine(result);
+        }
+        static string str3(string str)
+        {
+            int left = str.LastIndexOf('(');
+            if (left == -1)
+            { return str; }
+            else
+            {
+                int right = str.IndexOf(')', left);
+                string str5= "";
+
+                str5 += str.Substring(0, left);
+                str5 += new string(str.Substring(left + 1, right - left - 1).Reverse().ToArray());
+                str5 += str.Substring(right + 1);
+
+                return str3(str5);
+            }
         }
         static void Main(string[] args)
         {
             bool t = true;
-
             while (t)
             {
                 int x;
                 Console.Write("\n+++Listeyi gormek icin 0 giriniz. Cikmak icin -1 giriniz\n+++İlgili soruyu gormek icin numarasını giriniz: ");
-                x = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine();
-                switch (x)
+                try
                 {
-                    case -1: t = false;break;
-                    case 0: case0();break;
-                    case 1: case1();break;
-                    case 2: case2();break;
-                    case 3: case3();break;
-                    case 4: case4();break;
-                    case 5: case5();break;
-                    case 6: case6();break;
-                    case 7: case7();break;
-                    case 8: case8();break;
-                    case 9: case9();break;
-                    case 10: case10();break;
-                    case 11: case11();break;
-                    case 12: case12();break;
-                    case 13: case13();break;
-                    case 14: case14();break;
-                    case 15: case15();break;
-                    case 16: case16();break;
-                    case 17: case17();break;
-                    case 18: case18();break;
-                    case 19: case19();break;
-                    case 20: case20();break;
-                    case 21: case21();break;
-                    case 22: case22();break;
-                    case 23: case23();break;
-                    case 24: case24();break;
-                    case 25: case25();break;
-                    case 26: case26();break;
-                    case 27: case27();break;
-                    case 28: case28();break;
-                    case 29: case29();break;
-                    case 30: case30();break;
-                    case 31: case31();break;
-                    case 32: case32();break;
-                    case 33: case33();break;
-                    case 34: case34();break;
-                    case 35: case35();break;
+                    x = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine();
+                    switch (x)
+                    {
+                        case -1: t = false;break;
+                        case 0: case0();break;
+                        case 1: case1();break;
+                        case 2: case2();break;
+                        case 3: case3();break;
+                        case 4: case4();break;
+                        case 5: case5();break;
+                        case 6: case6();break;
+                        case 7: case7();break;
+                        case 8: case8();break;
+                        case 9: case9();break;
+                        case 10: case10();break;
+                        case 11: case11();break;
+                        case 12: case12();break;
+                        case 13: case13();break;
+                        case 14: case14();break;
+                        case 15: case15();break;
+                        case 16: case16();break;
+                        case 17: case17();break;
+                        case 18: case18();break;
+                        case 19: case19();break;
+                        case 20: case20();break;
+                        case 21: case21();break;
+                        case 22: case22();break;
+                        case 23: case23();break;
+                        case 24: case24();break;
+                        case 25: case25();break;
+                        case 26: case26();break;
+                        case 27: case27();break;
+                        case 28: case28();break;
+                        case 29: case29();break;
+                        case 30: case30();break;
+                        case 31: case31();break;
+                        case 32: case32();break;
+                        case 33: case33();break;
+                        case 34: case34();break;
+                        case 35: case35();break;
+                        case 36: case36();break;
+                        case 37: case37();break;
+                        case 38: case38();break;
+                        case 39: case39();break;
+                        case 40: case40();break;
+                        case 41: case41();break;
+                        case 42: case42();break;
+                        case 43: case43();break;
+                        case 44: case44();break;
+                        case 45: case45();break;
+                        case 46: case46();break;
+                        case 47: case47();break;
+                        case 48: case48();break;
+                        case 49: case49();break;
+                        case 50: case50();break;
+                        case 51: case51();break;
+                        case 52: case52();break;
+                        case 53: case53();break;
+                        case 54: case54();break;
+                        case 55: case55();break;
+                        case 56: case56();break;
+                        case 57: case57();break;
+                        case 58: case58();break;
+                        case 59: case59();break;
+                        case 60: case60();break;
+                        case 61: case61(); break;
+                    }
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("\n-1, 0 ve pozitif tamsayilar giriniz\n\n");
+                    Console.WriteLine(e);
                 }
             }
         }
